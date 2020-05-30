@@ -1,11 +1,35 @@
-# Intro to Machine Learning - TensorFlow Project
+### Date created
+This project was created May 28th, 2020.
 
-Project code for Udacity's Intro to Machine Learning with TensorFlow Nanodegree program. In this project, you will first develop code for an image classifier built with TensorFlow, then you will convert it into a command line application.
+### Project Title
+Oxford_flowers_image_classifier
 
-In order to complete this project, you will need to use the GPU enabled workspaces within the classroom.  The files are all available here for your convenience, but running on your local CPU will likely not work well.
+### Description
+Keras/TensorFlow project done as part of the Udacity's Introduction to Machine Learning Nanodegree. It consists on a modified version of Google's MobileNet Convolutional Neural Network, modified with a last layer to adap it to a 102-class flower classifier.
 
-You should also only enable the GPU when you need it. If you are not using the GPU, please disable it so you do not run out of time!
+The classifier was trained with the oxford_flowers102 dataset from TensorFlow.
 
-### Data
+The saved model can be run from the predict.py script and can work with any image (it will try to classify it as one of the 102 flower classes that the model was trained on).
 
-The data for this project is quite large - in fact, it is so large you cannot upload it onto Github.  If you would like the data for this project, you will want download it from the workspace in the classroom.  Though actually completing the project is likely not possible on your local unless you have a GPU.  You will be training using 102 different types of flowers, where there ~20 images per flower to train on.  Then you will use your trained classifier to see if you can predict the type for new images of the flowers.
+### Files used
+predict.py  - main script
+helper.py - contains helper functions
+label_map.json - a label map that will allow the model to give flower name predictions instead of just the predicted class number
+flower_classifier_project.h5 - keras model of the modified and pretrained model
+Project_Image_Classifier_Project.ipynb - notebook used for the model creation (check it if you need details on the model creation and training process)
+
+### How to use the script
+File containing the script: predict.py
+
+Basic usage:
+python predict.py image_path saved_model_path
+
+Additional options:
+--top_k: the model gives class probabilities for the top k number of classes. By default it only predicts and gives probabilities for the top 1 class
+--category_names: the model used the provided label map (in json format) to assign label names to the predictions (the model predicts label numbers by default)
+
+Usage with options (example with real file paths):
+python predict.py blue_grape_hyacinth.jpg flower_classifier_project.h5 --top_k 4 --category_names label_map.json  --> returns predictions with class names and probabilities for the top 4 classes
+
+### Credits
+Project guidance provided by the Udacity instructors.
